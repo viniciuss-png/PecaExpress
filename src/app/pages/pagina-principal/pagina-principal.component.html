@@ -154,5 +154,39 @@
         </ul>
       </div>
     </div>
+    <div class="enviar-curriculo">
+      <h3>Envie seu currículo</h3>
+      <form id="formCurriculo" enctype="multipart/form-data">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+
+        <label for="curriculo">Currículo (PDF):</label>
+        <input type="file" id="curriculo" name="curriculo" accept="application/pdf" required>
+
+        <button type="button" id="btnEnviar">Enviar</button>
+      </form>
+    </div>
   </div>
 </footer>
+
+<script>
+  document.getElementById('btnEnviar').addEventListener('click', function () {
+    const nome = document.getElementById('nome').value;
+    const curriculo = document.getElementById('curriculo').files[0];
+
+    if (!nome || !curriculo) {
+      alert('Por favor, preencha o nome e selecione um arquivo.');
+      return;
+    }
+
+    setTimeout(() => {
+      const sucesso = Math.random() > 0.2; 
+
+      if (sucesso) {
+        alert('Currículo enviado com sucesso!');
+      } else {
+        alert('Falha ao enviar o currículo. Tente novamente.');
+      }
+    }, 1000);
+  });
+</script>
